@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update]
+  before_action :check_user, only: [:edit, :update]
+
   
   def show
   end
@@ -34,14 +36,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :location)
   end
   
   def set_params
     @user = User.find(params[:id])
   end
   
-  def current_user
+  def check_user
     redirect_to root_path if @user != current_user
   end
 end
