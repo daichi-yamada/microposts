@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  
+  
   before_action :set_params, only: [:show, :edit, :update]
   before_action :check_user, only: [:edit, :update]
 
@@ -33,6 +36,26 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def following
+    @title = 'followings'
+    @user = User.find(params[:id])
+    @users = @user.following_relationships.order(created_at: :desc)
+    render 'show_follow'
+  end
+  
+  def followers
+    @title = 'followers'
+    @user = User.find(params[:id])
+    @users = @user.follower_relationships.order(created_at: :desc)
+    render 'show_follow'
+  end
+  
+  
+  
+  
+  
+  
 
   private
 

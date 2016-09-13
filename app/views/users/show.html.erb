@@ -19,9 +19,13 @@
     
 <% if @user.microposts.any? %>
 
-      <h3>Microposts (
-<%= @user.microposts.count %>
-)</h3>
+      <h3>Microposts (<%= @user.microposts.count %>)
+      <a href="<%= following_user_path(@user) %>">Following(<%= @user.following_relationships.count %>)</a>
+      <a href="<%= followers_user_path(@user) %>">Follower(<%= @user.follower_relationships.count %>)</a>
+　　　
+　　　
+　　　
+　　　
       <ol class="microposts">
         
 <%= render @microposts %>
