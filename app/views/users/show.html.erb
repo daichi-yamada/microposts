@@ -16,12 +16,13 @@
   <div class="col-md-8">
       
       <%= render 'follow_form' if logged_in? %>
+      
+      <a href="<%= following_user_path(@user) %>">Following(<%= @user.following_relationships.count %>)</a>
+      <a href="<%= followers_user_path(@user) %>">Follower(<%= @user.follower_relationships.count %>)</a>
     
 <% if @user.microposts.any? %>
 
       <h3>Microposts (<%= @user.microposts.count %>)
-      <a href="<%= following_user_path(@user) %>">Following(<%= @user.following_relationships.count %>)</a>
-      <a href="<%= followers_user_path(@user) %>">Follower(<%= @user.follower_relationships.count %>)</a>
 　　　
 　　　
 　　　
